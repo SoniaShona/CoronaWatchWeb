@@ -11,11 +11,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import PlaceIcon from '@material-ui/icons/Place';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import GroupIcon from '@material-ui/icons/Group';
-import PublicIcon from '@material-ui/icons/Public';
 import PersonIcon from '@material-ui/icons/Person';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -29,13 +25,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
-import Dashboard from './dashboard/Dashboard'; 
-import GestionDesZones from './dashboard/Dashboard';
-import Statistiques from './dashboard/Dashboard';
-import MonCompte from './dashboard/Dashboard';
-import GestionDesArticles from './GestionArticles/GestionArticles';
-import InfosReseaux from './infosReseaux/InfoReseaux'
-import GestionPostsUtilisateurs from './postsUtilisateurs/GestionPostsUtilisateurs';
+import HomeIcon from '@material-ui/icons/Home';
+import Home from './home/Home'
 
 
 const drawerWidth = 240;
@@ -220,13 +211,10 @@ export default function PersistentDrawerLeft() {
   const menuId = 'primary-search-account-menu';
   
   function chooseIncon (index) {
-    if (index === 0 ) return (<DashboardIcon/>) ;
+    if (index === 0 ) return (<HomeIcon/>) ;
     if (index === 1 ) return (<AssignmentIcon /> ) ;
-    if (index === 2 ) return (<PlaceIcon/>) ;
-    if (index === 3 ) return (<GroupIcon/>) ;
-    if (index === 4 ) return (<PublicIcon/>) ;
-    if (index === 5 ) return (<InsertChartIcon/>) ;
-    if (index === 6 ) return (<PersonIcon/>) ;
+    if (index === 2 ) return (<InsertChartIcon/>) ;
+    if (index === 3 ) return (<PersonIcon/>) ;
   }
 
   function  handleContent (index){
@@ -321,8 +309,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider style={{width:'50%', marginLeft:'25%',backgroundColor:'#fff', marginBottom:'10px'}} />
         <List>
-          {['Dashboard','Gestion des articles','Gestion des zones', 'Gestion des postes',
-              'Infos des reseaux', 'Statistiques', 'Mon compte'].map((text, index) => (
+          {['Accueil','Gestion des articles', 'Statistiques', 'Mon compte'].map((text, index) => (
             <ListItem button key={text} className={'menuItem1'} onClick={event => handleContent(index)} >
               <ListItemIcon className={classes.menuItem}>
                 {chooseIncon(index)}
@@ -350,26 +337,17 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })} 
       >
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <Dashboard/>         
-        </Grid>
         <Grid className={'content'}  item lg={12} md={12}>
-          <GestionDesArticles />         
+          <Home />         
         </Grid>
         <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <GestionDesZones />         
+          <Home />         
         </Grid>
         <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <GestionPostsUtilisateurs />         
+          <Home />         
         </Grid>
         <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <InfosReseaux />         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <Statistiques/>         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <MonCompte />         
+          <Home />         
         </Grid>
       </main> 
     </div>

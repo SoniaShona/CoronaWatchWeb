@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1 ,
+        "titreArticle" : "Titre de l'article 1",
+        "ContenuArticle" : "Ceci est le contenu de l'article 1 Ceci est le contenu de l'article 1 Ceci est le contenu de l'article 1 Ceci est le contenu de l'article 1 Ceci est le contenu de l'article 1" ,
+        "imagesArticle" : [
+            {
+                "srcimg" : "../../../public/mediaArticles/img1_article1_redactor1.jpg"
+            },
+            {
+                "srcimg" : "../../../public/mediaArticles/img2_article1_redactor1.jpg"
+            }
+        ],
+        "redacteur" : "nom du Redacteur 1",
+        "date" : "2020-03-15 14:00:00"
+    },
+    {
+        "id" : 2 ,
+        "titreArticle" : "Titre de l'article 2",
+        "ContenuArticle" : "Ceci est le contenu de l'article 2 Ceci est le contenu de l'article 2 Ceci est le contenu de l'article 2 Ceci est le contenu de l'article 2 Ceci est le contenu de l'article 2" ,
+        "imagesArticle" : [
+            {
+                "srcimg" : "../../../public/mediaArticles/img1_article2_redactor2.jpg"
+            }
+            
+        ],
+        "redacteur" : "nom du Redacteur 2",
+        "date" : "2020-04-06 15:51:00"
+    },
+    {
+        "id" : 3 ,
+        "titreArticle" : "Titre de l'article 3",
+        "ContenuArticle" : "Ceci est le contenu de l'article 3 Ceci est le contenu de l'article 3 Ceci est le contenu de l'article 3 Ceci est le contenu de l'article 3 Ceci est le contenu de l'article 3" ,
+        "imagesArticle" : null,
+        "redacteur" : "nom du Redacteur 1",
+        "date" : "2020-04-08 10:13:00"
+    }
+]

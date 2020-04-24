@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../App.css' ;
 import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,11 +10,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import PlaceIcon from '@material-ui/icons/Place';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import GroupIcon from '@material-ui/icons/Group';
-import PublicIcon from '@material-ui/icons/Public';
 import PersonIcon from '@material-ui/icons/Person';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -29,13 +24,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
-import Dashboard from './dashboard/Dashboard'; 
-import GestionDesZones from './dashboard/Dashboard';
-import Statistiques from './dashboard/Dashboard';
-import MonCompte from './dashboard/Dashboard';
-import GestionDesArticles from './GestionArticles/GestionArticles';
-import InfosReseaux from './infosReseaux/InfoReseaux'
-import GestionPostsUtilisateurs from './postsUtilisateurs/GestionPostsUtilisateurs';
+import HomeIcon from '@material-ui/icons/Home';
+import Home from './home/Home'
+
+const element=(<Home/>);
 
 
 const drawerWidth = 240;
@@ -55,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     }),
     backgroundColor:'#ffffff',
     height: '50px',
-    boxShadow: '0px -3px 10px 0px rgba(204,204,238,0.75)',
+    boxShadow: '0px -5px 9px 0px rgba(0,0,0,0.75)',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -70,53 +62,44 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   menuItem: {
-    color:'#ffffff',
-    fontSize:'15px',
-    fontWeight:'2%',
+    color:'textSecondary',
   },
   menuRow:{
-    '&:hover':{backgroundColor:'rgba(255,255,255,.1)',},
-    '&:first-child':{
-      backgroundColor:'rgba(0,0,100,.15)',
-      borderLeft:'5px solid #fff'
-    },
+   
   },
   menuClose:{
-    color:'#ffffff',
+    color:'#111111',
     position:'absolute',
-    right:'1.9%',
-    top:'7px',
-    height:'35px',
-    width:'35px', 
-    '&:hover':{backgroundColor:'rgba(255,255,255,.1)',}
+    right:'1%',
+    top:'0.5%',
+  },
+  title: {
+    color:'#111111',
+    marginTop:'6.5%',
+    marginLeft:'10%',
+    width: '130px',
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   },
   profilePhoto: {
-    marginLeft:'10px',
-    marginTop: '6px',
-    height:'40px',
-    width:'40px'
+    marginLeft:'5px',
+    marginTop: '2px',
   },
   small: {
     width: theme.spacing(4),
     height: theme.spacing(4),
-    border:'1px #EEEEEE solid'
-  },
-  NotificationsBtn:{
-    marginTop:'8px',
-    marginRight:'10px',
-    height:'37px',
-    width:'37px'
   },
   search: {
     position: 'relative',
-    borderTopLeftRadius:'5px',
-    borderBottomLeftRadius:'5px',
-    backgroundColor: fade('#CCCCDD', 0.2),
+    borderRadius:'3px',
+    backgroundColor: fade('#98A2BE', 0.15),
     '&:hover': {
-      backgroundColor: fade('#CCCCDD', 0.3),
+      backgroundColor: fade('#98A2BE', 0.25),
     },
-    
-    left: '-16px',
+    marginRight: theme.spacing(85),
+    left: '-10px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(2),
@@ -126,13 +109,7 @@ const useStyles = makeStyles(theme => ({
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
-    width:'11%',
-    borderTopRightRadius:'5px',
-    borderBottomRightRadius:'5px',
     position: 'absolute',
-    top: '1.2%',
-    left:'95%',
-    backgroundColor:'#4E73DF',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
@@ -140,20 +117,20 @@ const useStyles = makeStyles(theme => ({
   },
   inputRoot: {
     color:"action",
-    width: '320px',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc( ${theme.spacing(2)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
+    width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
   },
   sectionDesktop: {
     position:'fixed',
-    right: '2.5%',
+    right: '2%',
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
@@ -169,8 +146,8 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background:'#4E73DF',
-    boxShadow: '-3px 52px 10px 0px rgba(204,204,238,0.75)',
+    background:'#ffffff',
+    boxShadow: '-5px 52px 9px 0px rgba(0,0,0,0.75)',
   },
   drawerHeader: {
     display: 'flex',
@@ -184,7 +161,7 @@ const useStyles = makeStyles(theme => ({
 
   },
   content: {
-    backgroundColor: fade('#CCCCFE', 0.15),
+    backgroundColor: fade('#98A2BE', 0.15),
     flexGrow: 1,
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
@@ -215,35 +192,14 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
 
   const menuId = 'primary-search-account-menu';
   
   function chooseIncon (index) {
-    if (index === 0 ) return (<DashboardIcon/>) ;
+    if (index === 0 ) return (<HomeIcon/>) ;
     if (index === 1 ) return (<AssignmentIcon /> ) ;
-    if (index === 2 ) return (<PlaceIcon/>) ;
-    if (index === 3 ) return (<GroupIcon/>) ;
-    if (index === 4 ) return (<PublicIcon/>) ;
-    if (index === 5 ) return (<InsertChartIcon/>) ;
-    if (index === 6 ) return (<PersonIcon/>) ;
-  }
-
-  function  handleContent (index){
-    var menuElement = document.getElementsByClassName('menuItem1');
-    var element = document.getElementsByClassName('content');
-    for(let j=0; j<menuElement.length;j++){
-      menuElement[j].onclick = function () {
-          for (let i = 0; i < element.length; i++){
-              element[i].style.display = "none";
-              menuElement[i].style.borderLeft = '5px solid transparent'; 
-              menuElement[i].style.background= "#4E73DF";
-          }
-          menuElement[j].style.background= "rgba(0,0,100,.15)";
-          element[j].style.display = "block";
-          menuElement[j].style.borderLeft = '5px solid #fff';
-      };  
-    }
+    if (index === 2 ) return (<InsertChartIcon/>) ;
+    if (index === 3 ) return (<PersonIcon/>) ;
   }
 
   return (
@@ -266,6 +222,9 @@ export default function PersistentDrawerLeft() {
             <MenuIcon color="action" />
           </IconButton>
           <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon color="action" />
+            </div>
             <InputBase 
               placeholder="Search…"
               classes={{
@@ -274,15 +233,12 @@ export default function PersistentDrawerLeft() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <div className={classes.searchIcon}>
-              <SearchIcon style={{color:"#ffffff",}} />
-            </div>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show new notifications" color="inherit" className={classes.NotificationsBtn}>
+            <IconButton aria-label="show 17 new notifications" color="inherit" style={{marginTop:'8px', marginRight:'3px',}}>
               <Badge badgeContent={1} color="secondary">
-                <NotificationsIcon  color='action' />
+                <NotificationsIcon color="action" />
               </Badge>
             </IconButton>
             <IconButton className={classes.profilePhoto}
@@ -292,7 +248,7 @@ export default function PersistentDrawerLeft() {
               aria-haspopup="true"
               color="action"
             >
-              <Avatar alt="Remy Sharp" src="/images/face16.jpg" className={classes.small}/>
+              <Avatar alt="logo" src="" className={classes.small}/>
             </IconButton>
           </div>
         </Toolbar>
@@ -310,7 +266,7 @@ export default function PersistentDrawerLeft() {
         <div className={classes.drawerHeader}>
           {
           // ADD a reference to the LOGO HERE 
-          <img alt='logo' src="/images/logo.png" height='100'width='100' style={{margin:'40px', marginRight:'60px'}}/>
+          <img alt='logo' src="/images/logo.png" height='100'width='100' style={{margin:'40px', marginRight:'55px'}}/>
           }
 
 
@@ -319,11 +275,10 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider style={{width:'50%', marginLeft:'25%',backgroundColor:'#fff', marginBottom:'10px'}} />
+        <Divider />
         <List>
-          {['Dashboard','Gestion des articles','Gestion des zones', 'Gestion des postes',
-              'Infos des reseaux', 'Statistiques', 'Mon compte'].map((text, index) => (
-            <ListItem button key={text} className={'menuItem1'} onClick={event => handleContent(index)} >
+          {['Accueil','Gestion des articles', 'Statistiques', 'Mon compte'].map((text, index) => (
+            <ListItem button key={text} className={classes.menuRow} >
               <ListItemIcon className={classes.menuItem}>
                 {chooseIncon(index)}
               </ListItemIcon>
@@ -331,11 +286,11 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           ))}
         </List>
-        <Divider style={{ backgroundColor:'#fff', marginTop:'10px'}} />
+        <Divider />
 
         <List>
           {[' Déconnexion'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} className={classes.menuRow}>
               <ListItemIcon className={classes.menuItem}>
                 <ExitToAppIcon/>
               </ListItemIcon>
@@ -350,27 +305,7 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })} 
       >
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <Dashboard/>         
-        </Grid>
-        <Grid className={'content'}  item lg={12} md={12}>
-          <GestionDesArticles />         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <GestionDesZones />         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <GestionPostsUtilisateurs />         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <InfosReseaux />         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <Statistiques/>         
-        </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
-          <MonCompte />         
-        </Grid>
+      {element}
       </main> 
     </div>
   );

@@ -9,8 +9,8 @@ import PlaceIcon from '@material-ui/icons/Place';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    borderLeft: '5px solid #4a90e4',
-    boxShadow: '0px 2px 23px -14px rgba(0,0,0,0.75)',
+    borderLeft: '5px solid #4E73DF',
+    boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',
   },
   content: {
     alignItems: 'center',
@@ -18,16 +18,17 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontWeight: 700,
-    color:'#4a90e4',
+    color:'#4E73DF',
   },
   avatar: {
-    backgroundColor: '#4a90e4',
+    backgroundColor: '#ffffff',
     height: 56,
     width: 56
   },
   icon: {
-    height: 32,
-    width: 32
+    color: '#AAAAB0',
+    height: 45,
+    width: 45
   },
 
 }));

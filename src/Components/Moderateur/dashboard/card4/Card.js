@@ -9,8 +9,8 @@ import PublicIcon from '@material-ui/icons/Public';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    borderLeft: '5px solid #fe885e',
-    boxShadow: '0px 2px 23px -14px rgba(0,0,0,0.75)',
+    borderLeft: '5px solid #F6C23E',
+    boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',
   },
   content: {
     alignItems: 'center',
@@ -18,16 +18,17 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontWeight: 700,
-    color:'#fe885e',
+    color:'#F6C23E',
   },
   avatar: {
-    backgroundColor: '#fe885e',
+    backgroundColor: '#FFFFFF',
     height: 56,
     width: 56
   },
   icon: {
-    height: 32,
-    width: 32
+    height: 45,
+    width: 45,
+    color:'#CCCCDD'
   },
 
 }));

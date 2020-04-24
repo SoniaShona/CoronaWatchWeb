@@ -9,8 +9,8 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    borderLeft: '5px solid #06bf6c',
-    boxShadow: '0px 2px 23px -14px rgba(0,0,0,0.75)',
+    borderLeft: '5px solid #1CC88A',
+    boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',
   },
   content: {
     alignItems: 'center',
@@ -18,16 +18,17 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontWeight: 700,
-    color:'#06bf6c',
+    color:'#1CC88A',
   },
   avatar: {
-    backgroundColor: '#06bf6c',
+    backgroundColor: '#ffffff',
     height: 56,
     width: 56
   },
   icon: {
-    height: 32,
-    width: 32
+    height: 45,
+    width: 45,
+    color:'#ccccdd'
   },
 
 }));

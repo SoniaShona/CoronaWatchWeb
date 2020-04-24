@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#ffffff',
-    boxShadow: '0px 2px 23px -14px rgba(0,0,0,0.75)',
+    boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',
     width:'98%',
     marginLeft:'1.7%',
     borderRadius:'3px',
