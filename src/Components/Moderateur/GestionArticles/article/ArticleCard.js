@@ -1,12 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import Async from 'react-async';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -69,8 +67,25 @@ export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   var date =new Date(data.timestamp).toLocaleString();
-
+  
+  // load comments
+  function loadComments() {
+    axios.get("https://corona-watch-esi.herokuapp.com/content/post-comments/"+data.id)
+        .then(res => {
+          //MyComments = res.data;
+          //this.setState({ emps });
+          console.log(res.data);
+        })
+  }
+  
   const supprimerArticle = (event, id) => {
+    axios.delete('https://corona-watch-esi.herokuapp.com/content/articles/'+id)
+    .then((response) => {
+      console.log(response);
+      document.getElementById('supprimerBtn').style.display='none';
+    }, (error) => {
+      console.log(error);
+    });
     
   }
 
@@ -78,21 +93,18 @@ export default function RecipeReviewCard(props) {
     const data1 ={
       "id": data.id,
       "images": data.images,
-      "videos": [
-          {
-              "content": "https://coronawatch.blob.core.windows.net/media/articles/19/videos/9c363382-024b-43ed-bab8-451ed789b413.png"
-          }
-      ],
-      "writer": "admin",
+      "videos":data.videos,
+      "writer": data.writer,
       "verified": true,
-      "timestamp": "2020-04-20T15:26:31.925289Z",
-      "title": "titre",
-      "content": "dela3 raho ghali azure"
+      "timestamp": data.timestamp,
+      "title": data.title,
+      "content": data.content,
     }
 
     axios.put('https://corona-watch-esi.herokuapp.com/content/articles/'+data.id, data1)
     .then((response) => {
       console.log(response);
+      document.getElementById('validerBtn').style.display='none';
     }, (error) => {
       console.log(error);
     });
@@ -102,22 +114,21 @@ export default function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
 
+
   return (
     <Card className={classes.root}>
+      <div style={{position:'absolute',marginTop:'15px', marginLeft:'280px'}}>
+          <Button id='validerBtn' variant="contained" color="primary" style={{backgroundColor:'#4E73DF', marginRight:'10px'}} onClick={event => validerArticle(event, data)}>
+              Valider
+            </Button>
+            <Button id='supprimerBtn' variant="contained" color="secondary" onClick={event => supprimerArticle(event, data.id)}>
+              Supprimer
+          </Button>
+        </div>
       <CardHeader style={{textAlign:'left'}}
         avatar={
           <Avatar src={mock.ArticleCard.photoProfilRedacteur} aria-label="recipe" className={classes.avatar}>
           </Avatar>
-        }
-        action={
-          <IconButton className={classes.articleBtn} >
-            <Button variant="contained" color="primary" style={{backgroundColor:'#4E73DF', marginRight:'10px'}} onClick={event => validerArticle(event, data)}>
-              Valider
-            </Button>
-            <Button variant="contained" color="secondary" onClick={event => supprimerArticle(event, data.id)}>
-              Supprimer
-            </Button>
-          </IconButton>
         }
         title={data.writer}
         subheader={date}
@@ -151,12 +162,7 @@ export default function RecipeReviewCard(props) {
         ))}
       </Grid>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
-        {mock.ArticleCard.jaime}</Typography>
-        <IconButton aria-label="share">
+        <IconButton aria-label="comments">
           <ChatBubbleIcon />
         </IconButton>
         <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
@@ -167,11 +173,12 @@ export default function RecipeReviewCard(props) {
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
+          aria-label="show comments"
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+      
       <Collapse in={expanded} timeout="auto" unmountOnExit style={{borderTop:'1px solid #DDDDDD', paddingBottom:'30px'}}>
         {mock.ArticleCard.listeCommentaires.map(stat => (
           <Grid container spacing={2} style={{padding:'3%', textAlign:'left',paddingBottom:'0px'}}>
@@ -196,6 +203,8 @@ export default function RecipeReviewCard(props) {
         </Grid>
         ))}
       </Collapse>
-    </Card>
+    </Card>      
   );
-}
+};  
+
+

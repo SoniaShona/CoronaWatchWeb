@@ -230,20 +230,16 @@ export default function PersistentDrawerLeft() {
   }
 
   function  handleContent (index){
-    var menuElement = document.getElementsByClassName('menuItem1');
-    var element = document.getElementsByClassName('content');
-    for(let j=0; j<menuElement.length;j++){
-      menuElement[j].onclick = function () {
-          for (let i = 0; i < element.length; i++){
-              element[i].style.display = "none";
-              menuElement[i].style.borderLeft = '5px solid transparent'; 
-              menuElement[i].style.background= "#4E73DF";
-          }
-          menuElement[j].style.background= "rgba(0,0,100,.15)";
-          element[j].style.display = "block";
-          menuElement[j].style.borderLeft = '5px solid #fff';
-      };  
+    var menuElement = document.getElementsByClassName('menuItem01');
+    var element = document.getElementsByClassName('contentModerateur');
+    for (let i = 0; i < element.length; i++){
+      element[i].style.display = "none";
+      menuElement[i].style.borderLeft = '5px solid transparent'; 
+      menuElement[i].style.background= "#4E73DF";
     }
+    menuElement[index].style.background= "rgba(0,0,100,.15)";
+    element[index].style.display = "block";
+    menuElement[index].style.borderLeft = '5px solid #fff';
   }
 
   return (
@@ -323,7 +319,7 @@ export default function PersistentDrawerLeft() {
         <List>
           {['Dashboard','Gestion des articles','Gestion des zones', 'Gestion des postes',
               'Infos des reseaux', 'Statistiques', 'Mon compte'].map((text, index) => (
-            <ListItem button key={text} className={'menuItem1'} onClick={event => handleContent(index)} >
+            <ListItem button key={index} className={'menuItem01'} onClick={event => handleContent(index)} >
               <ListItemIcon className={classes.menuItem}>
                 {chooseIncon(index)}
               </ListItemIcon>
@@ -350,25 +346,25 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })} 
       >
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} item lg={12} md={12}>
           <Dashboard/>         
         </Grid>
-        <Grid className={'content'}  item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <GestionDesArticles />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <GestionDesZones />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <GestionPostsUtilisateurs />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <InfosReseaux />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <Statistiques/>         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <MonCompte />         
         </Grid>
       </main> 

@@ -32,21 +32,20 @@ export default function AutoGrid() {
         
         <Grid item lg={6} md={6} xl={3} xs={12}>
           <Paper>
+            <NotifsArticles/>
+          </Paper>
+        </Grid>
+
+        <Grid item lg={6} md={6} xl={3} xs={12}>
+          <Paper>
               <CommentList/>
            </Paper>
         </Grid>
-      
     
         <Grid item lg={6} md={6} xl={3} xs={12}>
-            <ArticleList/>
+          <ArticleList/>
         </Grid>
 
-        
-        <Grid item lg={6} md={6} xl={3} xs={12}>
-          <Paper>
-          <NotifsArticles/>
-          </Paper>
-        </Grid>
       </Grid>
     </div>
   );

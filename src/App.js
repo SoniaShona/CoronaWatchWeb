@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css' ;
-import Moderateur from './Components/Moderateur/Moderateur'
-import Redacteur from './Components/Redacteur/Redacteur'
+import Gestionnaire from './Components/gestionnaire'
+
 
 function App() {
   return (
-    <div className="App">
-      <Redacteur/>
+    <div id='app' className="App">
+       <Gestionnaire/>
     </div>
+    
   );
 }
 

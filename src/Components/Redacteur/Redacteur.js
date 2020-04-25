@@ -218,20 +218,17 @@ export default function PersistentDrawerLeft() {
   }
 
   function  handleContent (index){
-    var menuElement = document.getElementsByClassName('menuItem1');
-    var element = document.getElementsByClassName('content');
-    for(let j=0; j<menuElement.length;j++){
-      menuElement[j].onclick = function () {
-          for (let i = 0; i < element.length; i++){
-              element[i].style.display = "none";
-              menuElement[i].style.borderLeft = '5px solid transparent'; 
-              menuElement[i].style.background= "#4E73DF";
-          }
-          menuElement[j].style.background= "rgba(0,0,100,.15)";
-          element[j].style.display = "block";
-          menuElement[j].style.borderLeft = '5px solid #fff';
-      };  
+    var menuElement = document.getElementsByClassName('menuItem2');
+    var element = document.getElementsByClassName('contentRedacteur');
+    console.log('idx= ',index);
+    for (let i = 0; i < element.length; i++){
+      element[i].style.display = "none";
+      menuElement[i].style.borderLeft = '5px solid transparent'; 
+      menuElement[i].style.background= "#4E73DF";
     }
+    menuElement[index].style.background= "rgba(0,0,100,.15)";
+    element[index].style.display = "block";
+    menuElement[index].style.borderLeft = '5px solid #fff';
   }
 
   return (
@@ -280,7 +277,7 @@ export default function PersistentDrawerLeft() {
               aria-haspopup="true"
               color="action"
             >
-              <Avatar alt="Remy Sharp" src="/images/face16.jpg" className={classes.small}/>
+              <Avatar alt="Remy Sharp" src="/images/face1.jpg" className={classes.small}/>
             </IconButton>
           </div>
         </Toolbar>
@@ -310,7 +307,7 @@ export default function PersistentDrawerLeft() {
         <Divider style={{width:'50%', marginLeft:'25%',backgroundColor:'#fff', marginBottom:'10px'}} />
         <List>
           {['Accueil','Gestion des articles', 'Statistiques', 'Mon compte'].map((text, index) => (
-            <ListItem button key={text} className={'menuItem1'} onClick={event => handleContent(index)} >
+            <ListItem button key={text} className={'menuItem2'} onClick={event => handleContent(index)} >
               <ListItemIcon className={classes.menuItem}>
                 {chooseIncon(index)}
               </ListItemIcon>
@@ -337,19 +334,22 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })} 
       >
-        <Grid className={'content'}  item lg={12} md={12}>
+        <Grid className={'contentRedacteur'}  item lg={12} md={12}>
           <Home />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentRedacteur'} style={{display:'none'}} item lg={12} md={12}>
           <Home />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentRedacteur'} style={{display:'none'}} item lg={12} md={12}>
           <Home />         
         </Grid>
-        <Grid className={'content'} style={{display:'none'}} item lg={12} md={12}>
+        <Grid className={'contentRedacteur'} style={{display:'none'}} item lg={12} md={12}>
           <Home />         
         </Grid>
       </main> 
     </div>
   );
 }
+
+
+

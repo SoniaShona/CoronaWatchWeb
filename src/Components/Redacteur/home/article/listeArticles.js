@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -77,10 +78,11 @@ export default function RecipeReviewCard(props) {
         }
         action={
           <IconButton aria-label="settings">
+            <CheckCircleIcon style={{ color: '#4CAF50' }}/>
             <MoreVertIcon />
           </IconButton>
         }
-        title={ stat.writer.first_name +' '+ stat.writer.last_name}
+        title='admin'
         subheader={stat.timestamp}
       />
       <CardContent>
