@@ -30,7 +30,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
 import Dashboard from './dashboard/Dashboard'; 
-import GestionDesZones from './dashboard/Dashboard';
+import Test from './test_fonctionnel_article/GestionArticles';
 import Statistiques from './dashboard/Dashboard';
 import MonCompte from './dashboard/Dashboard';
 import GestionDesArticles from './GestionArticles/GestionArticles';
@@ -317,7 +317,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider style={{width:'50%', marginLeft:'25%',backgroundColor:'#fff', marginBottom:'10px'}} />
         <List>
-          {['Dashboard','Gestion des articles','Gestion des zones', 'Gestion des postes',
+          {['Dashboard','Gestion des articles','Test fonctionnel', 'Gestion des postes',
               'Infos des reseaux', 'Statistiques', 'Mon compte'].map((text, index) => (
             <ListItem button key={index} className={'menuItem01'} onClick={event => handleContent(index)} >
               <ListItemIcon className={classes.menuItem}>
@@ -353,7 +353,7 @@ export default function PersistentDrawerLeft() {
           <GestionDesArticles />         
         </Grid>
         <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
-          <GestionDesZones />         
+          <Test />         
         </Grid>
         <Grid className={'contentModerateur'} style={{display:'none'}} item lg={12} md={12}>
           <GestionPostsUtilisateurs />         
