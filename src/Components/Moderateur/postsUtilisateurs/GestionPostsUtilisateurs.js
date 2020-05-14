@@ -62,9 +62,9 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'titreArticle', numeric: false, disablePadding: true, label: 'Article' },
+  { id: 'titreArticle', numeric: false, disablePadding: true, label: 'Titre' },
   { id: 'Date', numeric: true, disablePadding: false, label: 'Date' },
-  { id: 'agentDeSante', numeric: false, disablePadding: false, label: 'Redacteur' },
+  { id: 'agentDeSante', numeric: false, disablePadding: false, label: 'Utilisateur' },
   { id: 'jaime', numeric: true, disablePadding: false, label: "j'aime" },
   { id: 'commentaire', numeric: true, disablePadding: false, label: 'Commentaire' },
 ];
@@ -263,8 +263,8 @@ export default function EnhancedTable() {
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     console.log('index=   ',name);
-    var x=document.getElementsByClassName('article');
-    document.getElementById('firstArticle').style.display='none';
+    var x=document.getElementsByClassName('Post');
+    document.getElementById('firstPost').style.display='none';
     for(let i=0;i<x.length; i++){x[i].style.display='none';}
     x[name].style.display='block';
     //afficher article of index=name
@@ -320,11 +320,11 @@ export default function EnhancedTable() {
                       </Typography>
                     </Grid>
                     {data.map(stat => (
-                    <Grid className={'article'} item lg={6} md={6} xl={3} xs={12} style={{display:'none'}}>
+                    <Grid className={'Post'} item lg={6} md={6} xl={3} xs={12} style={{display:'none'}}>
                         <Post {...stat}/>
                     </Grid>
                      ))}
-                    <Grid id='firstArticle' item lg={6} md={6} xl={3} xs={12}>
+                    <Grid id='firstPost' item lg={6} md={6} xl={3} xs={12}>
                         <Post {...data[0]}/>
                     </Grid>
                     <Grid item lg={6} md={12} xl={9} xs={12}>
