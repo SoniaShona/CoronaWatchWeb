@@ -23,7 +23,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import StyledBadge from '@material-ui/core/Badge';
-import ArticleCard from './post/Post';
+import Post from './post/Post';
 import { Card } from '@material-ui/core';
 import mock from './data'
 
@@ -31,7 +31,7 @@ var rows ;
 
 // load data
 const loadData = () =>
-  fetch("https://corona-watch-esi.herokuapp.com/content/articles/")
+  fetch("https://corona-watch-esi.herokuapp.com/content/videos/")
     .then(res => (res.ok ? res : Promise.reject(res)))
     .then(res => res.json())
 
@@ -316,16 +316,16 @@ export default function EnhancedTable() {
                         <AssignmentIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px' }}/>
                       </Card>
                       <Typography variant='h6' style={{textAlign:'left', marginLeft:'10px',}}>
-                        Gestion Des Articles
+                        Gestion Des Postes Utilisateurs
                       </Typography>
                     </Grid>
                     {data.map(stat => (
                     <Grid className={'article'} item lg={6} md={6} xl={3} xs={12} style={{display:'none'}}>
-                        <ArticleCard {...stat}/>
+                        <Post {...stat}/>
                     </Grid>
                      ))}
                     <Grid id='firstArticle' item lg={6} md={6} xl={3} xs={12}>
-                        <ArticleCard {...data[0]}/>
+                        <Post {...data[0]}/>
                     </Grid>
                     <Grid item lg={6} md={12} xl={9} xs={12}>
                        <Card className={classes.root} style={{boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',borderRadius:'5px'}}>
@@ -375,7 +375,7 @@ export default function EnhancedTable() {
                                             {row.title}
                                         </TableCell>
                                         <TableCell align="left" padding="none" style={{width:'20%'}}>{date}</TableCell>
-                                        <TableCell align="left" style={{width:'20%'}}>{row.writer}</TableCell>
+                                        <TableCell align="left" style={{width:'20%'}}>{row.user.username}</TableCell>
                                         <TableCell align="left" style={{width:'17%'}}>0</TableCell>
                                         <TableCell align="left">0</TableCell>
                                         </TableRow>

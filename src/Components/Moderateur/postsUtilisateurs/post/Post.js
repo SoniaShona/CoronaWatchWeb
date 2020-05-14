@@ -22,6 +22,9 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Button from '@material-ui/core/Button';
 import mock from '../data';
 
+import './video-react.css';
+import { Player } from 'video-react';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
@@ -79,7 +82,7 @@ export default function RecipeReviewCard(props) {
   }
   
   const supprimerArticle = (event, id) => {
-    axios.delete('https://corona-watch-esi.herokuapp.com/content/articles/'+id)
+    axios.delete('https://corona-watch-esi.herokuapp.com/content/videos/'+id)
     .then((response) => {
       console.log(response);
       document.getElementById('supprimerBtn').style.display='none';
@@ -92,16 +95,15 @@ export default function RecipeReviewCard(props) {
   const validerArticle = (event, data) => {
     const data1 ={
       "id": data.id,
-      "images": data.images,
-      "videos":data.videos,
-      "writer": data.writer,
+      "user": data.user,
       "verified": true,
       "timestamp": data.timestamp,
       "title": data.title,
-      "content": data.content,
+      "description": data.description,
+      "video":data.video,
     }
 
-    axios.put('https://corona-watch-esi.herokuapp.com/content/articles/'+data.id, data1)
+    axios.put('https://corona-watch-esi.herokuapp.com/content/videos/'+data.id, data1)
     .then((response) => {
       console.log(response);
       document.getElementById('validerBtn').style.display='none';
@@ -130,7 +132,7 @@ export default function RecipeReviewCard(props) {
           <Avatar src={mock.ArticleCard.photoProfilRedacteur} aria-label="recipe" className={classes.avatar}>
           </Avatar>
         }
-        title={data.writer}
+        title={data.user.first_name+" "+data.user.last_name}
         subheader={date}
       />
       <CardContent>
@@ -138,28 +140,16 @@ export default function RecipeReviewCard(props) {
         {data.title}
         </Typography> 
         <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
-        {data.content}</Typography>
+        {data.description}</Typography>
       </CardContent>
       <Grid container spacing={1} style={{padding:'3%',}}>
-        {data.images.map(stat => (
-            <Grid item lg={6} md={6} xl={3} xs={12}>
-            <CardMedia
-            className={classes.media}
-            image={stat.content}
-            title="image"
-            />
-            </Grid>  
-        ))}
-        {data.videos.map(stat => (
-            <Grid item lg={6} md={6} xl={3} xs={12}>
-            <video
-            className={classes.media}
-            src={stat.content}
-            autoPlay="true"
-            title="video"
-            />
-            </Grid>  
-        ))}
+        <Grid item lg={12} md={12} xl={12} xs={12}>
+        <Player
+          playsInline
+          poster="/assets/poster.png"
+          src={data.video}
+        />
+        </Grid>
       </Grid>
       <CardActions disableSpacing>
         <IconButton aria-label="comments">
