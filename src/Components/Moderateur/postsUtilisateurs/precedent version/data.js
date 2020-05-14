@@ -1,49 +1,41 @@
 export default {
 
-    //Liste des articles
-    ArticlesList: [
+    //Liste des Publications utilisateurs
+    ListDesPosts: [
       {
-        idArticle: 0,
-        titreArticle: "Article 1",
+        idPost: 0,
+        titrePost: "titre 1",
         date:"20-03-2020 - 10:30",
-        agentDeSante: "Mehemel Souhaib",
+        utilisateur: "Mehemel Souhaib",
+        jaime: 81,
+        commentaire: 3,
+      },
+      {
+        idPost: 0,
+        titrePost: "titre 2",
+        date:"20-03-2020 - 10:30",
+        utilisateur: "Mehemel Souhaib",
         jaime: 81,
         commentaire: 20,
       },
       {
-        idArticle: 1,
-        titreArticle: "Article 2",
+        idPost: 0,
+        titrePost: "titre 3",
         date:"20-03-2020 - 10:30",
-        agentDeSante: "Mehemel Souhaib",
+        utilisateur: "Mehemel Souhaib",
         jaime: 81,
-        commentaire: 20,
-      },
-      {
-        idArticle: 2,
-        titreArticle: "Article 3",
-        date:"20-03-2020 - 10:30",
-        agentDeSante: "Mehemel Souhaib",
-        jaime: 81,
-        commentaire: 20,
-      },
-      {
-        idArticle: 3,
-        titreArticle: "Article 4",
-        date:"20-03-2020 - 10:30",
-        agentDeSante: "Mehemel Souhaib",
-        jaime: 81,
-        commentaire: 20,
+        commentaire: 10,
       },
     ],
 
-    //Article Card
-    ArticleCard:{
-      idArticle: 1,
-      redacteur: 'MEHEMEL SOUHAIB',
-      photoProfilRedacteur: './images/face24.jpg',
+    //Post utilisateur
+    Post:{
+      idPost: 1,
+      utilisateur: 'MEHEMEL SOUHAIB',
+      photoProfilUtilisateur: './images/face24.jpg',
       date:'28-03-2020 - 11:15',
-      titreArticle:'نصائح لتجنب مخاطر كورونا',
-      contenuArticle: 'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
+      titrePost:'نصائح لتجنب مخاطر كورونا',
+      contenuPost: 'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
       'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
       'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
       'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+

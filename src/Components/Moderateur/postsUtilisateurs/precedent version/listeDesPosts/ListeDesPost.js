@@ -22,7 +22,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import StyledBadge from '@material-ui/core/Badge';
 import mock from '../data'
 
-const rows =mock.ArticlesList;
+const rows =mock.ListDesPosts;
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -51,10 +51,10 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'titreArticle', numeric: false, disablePadding: true, label: 'Article' },
+  { id: 'titrePost', numeric: false, disablePadding: true, label: 'Titre' },
   { id: 'Date', numeric: true, disablePadding: false, label: 'Date' },
-  { id: 'agentDeSante', numeric: false, disablePadding: false, label: 'Redacteur' },
-  { id: 'jaime', numeric: true, disablePadding: false, label: "j'aime" },
+  { id: 'Utilisateur', numeric: false, disablePadding: false, label: 'Utilisateur' },
+  { id: 'jaime', numeric: true, disablePadding: false, label: "J'aime" },
   { id: 'commentaire', numeric: true, disablePadding: false, label: 'Commentaire' },
 ];
 
@@ -148,7 +148,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" style={{position:'absolute', top:'20%',left:'3.4%'}}>
-          Nouveaux Articles
+          Nouvelles Publications
         </Typography>
       )}
 
@@ -239,7 +239,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.idArticle);
+      const newSelecteds = rows.map(n => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -248,8 +248,6 @@ export default function EnhancedTable() {
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
-    console.log('index=   ',name);
-    //afficher article of index=name
     let newSelected = [];
 
     if (selectedIndex === -1) {
@@ -266,7 +264,6 @@ export default function EnhancedTable() {
     }
 
     setSelected(newSelected);
-    console.log('index=   ',newSelected);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -306,17 +303,17 @@ export default function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.idArticle);
+                  const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.idArticle)}
+                      onClick={event => handleClick(event, row.name)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.idArticle}
+                      key={row.name}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -326,10 +323,10 @@ export default function EnhancedTable() {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none" style={{width:'20%'}}>
-                        {row.titreArticle}
+                        {row.titrePost}
                       </TableCell>
                       <TableCell align="left" padding="none" style={{width:'20%'}}>{row.date}</TableCell>
-                      <TableCell align="left" style={{width:'20%'}}>{row.agentDeSante}</TableCell>
+                      <TableCell align="left" style={{width:'20%'}}>{row.utilisateur}</TableCell>
                       <TableCell align="left" style={{width:'17%'}}>{row.jaime}</TableCell>
                       <TableCell align="left">{row.commentaire}</TableCell>
                     </TableRow>

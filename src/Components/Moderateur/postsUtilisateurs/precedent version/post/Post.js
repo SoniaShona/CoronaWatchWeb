@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import Async from 'react-async';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -25,22 +23,12 @@ import mock from '../data';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
-    boxShadow: '0px 2px 23px -14px rgba(204,204,238,0.75)',
-    borderRadius:'5px'
+    boxShadow: '0px 2px 23px -14px rgba(0,0,0,0.75)',
+    borderRadius:'5px',
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-  },
-  articleBtn:{
-    backgroundColor:'#fff',
-    '&:hover':{backgroundColor:'rgba(255,255,255)',}
-  },
-  articleActionList:{
-    width:'50%',
-    marginLeft:'47%',
-    marginBottom:'-120px',
-    zIndex:'10',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -61,126 +49,71 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard(props) {
-  const data=props;
+export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
-  var date =new Date(data.timestamp).toLocaleString();
-  
-  // load comments
-  function loadComments() {
-    axios.get("https://corona-watch-esi.herokuapp.com/content/post-comments/"+data.id)
-        .then(res => {
-          //MyComments = res.data;
-          //this.setState({ emps });
-          console.log(res.data);
-        })
-  }
-  
-  const supprimerArticle = (event, id) => {
-    axios.delete('https://corona-watch-esi.herokuapp.com/content/articles/'+id)
-    .then((response) => {
-      console.log(response);
-      document.getElementById('supprimerBtn').style.display='none';
-    }, (error) => {
-      console.log(error);
-    });
-    
-  }
-
-  const validerArticle = (event, data) => {
-    const data1 ={
-      "id": data.id,
-      "images": data.images,
-      "videos":data.videos,
-      "writer": data.writer,
-      "verified": true,
-      "timestamp": data.timestamp,
-      "title": data.title,
-      "content": data.content,
-    }
-
-    axios.put('https://corona-watch-esi.herokuapp.com/content/articles/'+data.id, data1)
-    .then((response) => {
-      console.log(response);
-      document.getElementById('validerBtn').style.display='none';
-    }, (error) => {
-      console.log(error);
-    });
-  }
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-
   return (
     <Card className={classes.root}>
-      <div style={{position:'absolute',marginTop:'15px', marginLeft:'280px'}}>
-          <Button id='validerBtn' variant="contained" color="primary" style={{backgroundColor:'#4E73DF', marginRight:'10px'}} onClick={event => validerArticle(event, data)}>
-              Valider
-            </Button>
-            <Button id='supprimerBtn' variant="contained" color="secondary" onClick={event => supprimerArticle(event, data.id)}>
-              Supprimer
-          </Button>
-        </div>
       <CardHeader style={{textAlign:'left'}}
         avatar={
-          <Avatar src={mock.ArticleCard.photoProfilRedacteur} aria-label="recipe" className={classes.avatar}>
+          <Avatar src={mock.Post.photoProfilUtilisateur} aria-label="recipe" className={classes.avatar}>
           </Avatar>
         }
-        title={data.writer}
-        subheader={date}
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={mock.Post.utilisateur}
+        subheader={mock.Post.date}
       />
       <CardContent>
         <Typography variant="h6" style={{textAlign:'right', paddingBottom:'2%'}} >
-        {data.title}
+        {mock.Post.titrePost}
         </Typography> 
         <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
-        {data.content}</Typography>
+        {mock.Post.contenuPost}</Typography>
       </CardContent>
       <Grid container spacing={1} style={{padding:'3%',}}>
-        {data.images.map(stat => (
+        {mock.Post.images.map(stat => (
             <Grid item lg={6} md={6} xl={3} xs={12}>
-            <CardMedia
+            <CardMedia key={stat.id}
             className={classes.media}
-            image={stat.content}
+            image={stat.src}
             title="image"
-            />
-            </Grid>  
-        ))}
-        {data.videos.map(stat => (
-            <Grid item lg={6} md={6} xl={3} xs={12}>
-            <video
-            className={classes.media}
-            src={stat.content}
-            autoPlay="true"
-            title="video"
             />
             </Grid>  
         ))}
       </Grid>
       <CardActions disableSpacing>
-        <IconButton aria-label="comments">
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
+        {mock.Post.jaime}</Typography>
+        <IconButton aria-label="share">
           <ChatBubbleIcon />
         </IconButton>
         <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'right'}}>
-        {mock.ArticleCard.commentaire}</Typography>
+        {mock.Post.commentaire}</Typography>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show comments"
+          aria-label="show more"
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      
       <Collapse in={expanded} timeout="auto" unmountOnExit style={{borderTop:'1px solid #DDDDDD', paddingBottom:'30px'}}>
-        {mock.ArticleCard.listeCommentaires.map(stat => (
+        {mock.Post.listeCommentaires.map(stat => (
           <Grid container spacing={2} style={{padding:'3%', textAlign:'left',paddingBottom:'0px'}}>
           <Grid item md={1} lg={1}>
             <Avatar src={stat.photoProfilUtilisateur} aria-label="Photo de profile" >
@@ -203,8 +136,6 @@ export default function RecipeReviewCard(props) {
         </Grid>
         ))}
       </Collapse>
-    </Card>      
+    </Card>
   );
-};  
-
-
+}
