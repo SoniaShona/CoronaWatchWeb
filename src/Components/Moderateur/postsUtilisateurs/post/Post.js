@@ -22,7 +22,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Button from '@material-ui/core/Button';
 import mock from '../data';
 
-import './video-react.css';
+import '../../../../Styles/video-react.css';
 import { Player } from 'video-react';
 
 const useStyles = makeStyles((theme) => ({

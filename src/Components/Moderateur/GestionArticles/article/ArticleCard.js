@@ -22,6 +22,9 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Button from '@material-ui/core/Button';
 import mock from '../data';
 
+import '../../../../Styles/video-react.css';
+import { Player } from 'video-react';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
@@ -151,13 +154,12 @@ export default function RecipeReviewCard(props) {
             </Grid>  
         ))}
         {data.videos.map(stat => (
-            <Grid item lg={6} md={6} xl={3} xs={12}>
-            <video
-            className={classes.media}
-            src={stat.content}
-            autoPlay="true"
-            title="video"
-            />
+            <Grid item lg={12} md={12} xl={12} xs={12}>
+              <Player
+                playsInline
+                poster="/assets/poster.png"
+                src={stat.videos}
+              />
             </Grid>  
         ))}
       </Grid>
