@@ -35,7 +35,7 @@ export default function PersistentDrawerLeft() {
               <Grid container spacing={3}>
                   <Grid container item lg={12} md={12} xl={12} xs={12}>
                     <Card style={{height:'30px', width:'30px', backgroundColor:'#4E73DF', borderRadius:'5px',boxShadow: '1px 2px 11px -1px rgba(164,164,208,0.75)',}}>
-                      <DashboardIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px' }}/>
+                      <DashboardIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px', marginLeft:'7px' }}/>
                     </Card>
                     <Typography variant='h6' style={{textAlign:'left', marginLeft:'10px',}}>
                       Dashboard

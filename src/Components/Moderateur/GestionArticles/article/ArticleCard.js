@@ -73,18 +73,17 @@ export default function RecipeReviewCard(props) {
   
   // load comments
   function loadComments() {
-    axios.get("https://corona-watch-esi.herokuapp.com/content/post-comments/"+data.id)
-        .then(res => {
-          //MyComments = res.data;
-          //this.setState({ emps });
-          console.log(res.data);
-        })
+     axios.get("https://corona-watch-esi.herokuapp.com/content/post-comments/"+data.id)
+     .then(res => {
+      //MyComments = res.data;
+      //this.setState({ emps });
+      console.log(res.data);
+    })
   }
   
   const supprimerArticle = (event, id) => {
     axios.delete('https://corona-watch-esi.herokuapp.com/content/articles/'+id)
     .then((response) => {
-      console.log(response);
       document.getElementById('supprimerBtn').style.display='none';
     }, (error) => {
       console.log(error);
@@ -106,7 +105,6 @@ export default function RecipeReviewCard(props) {
 
     axios.put('https://corona-watch-esi.herokuapp.com/content/articles/'+data.id, data1)
     .then((response) => {
-      console.log(response);
       document.getElementById('validerBtn').style.display='none';
     }, (error) => {
       console.log(error);
@@ -115,6 +113,7 @@ export default function RecipeReviewCard(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+    loadComments();
   };
 
 

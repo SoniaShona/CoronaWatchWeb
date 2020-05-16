@@ -97,7 +97,7 @@ export default function RecipeReviewCard(props) {
     console.log('id= ',data.id);
     const data1 ={
       // "id": data.id,
-      //"user": data.user,
+      //"user": "Souhaib MEHEMEL",
       "verified": true,
       //"timestamp": data.timestamp,
       //"title": data.title,
@@ -134,7 +134,7 @@ export default function RecipeReviewCard(props) {
           <Avatar src={mock.ArticleCard.photoProfilRedacteur} aria-label="recipe" className={classes.avatar}>
           </Avatar>
         }
-        title={data.user.first_name+" "+data.user.last_name}
+        title={data.user.username}
         subheader={date}
       />
       <CardContent>

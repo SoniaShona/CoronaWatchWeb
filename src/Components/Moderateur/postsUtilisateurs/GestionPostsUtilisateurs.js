@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import GroupIcon from '@material-ui/icons/Group';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -313,7 +313,7 @@ export default function EnhancedTable() {
                 <Grid container spacing={3}>
                     <Grid container item lg={12} md={12} xl={12} xs={12}>
                       <Card style={{height:'30px', width:'30px', backgroundColor:'#4E73DF', borderRadius:'5px',boxShadow: '1px 2px 11px -1px rgba(164,164,208,0.75)',}}>
-                        <AssignmentIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px' }}/>
+                        <GroupIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px', marginLeft:'7px' }}/>
                       </Card>
                       <Typography variant='h6' style={{textAlign:'left', marginLeft:'10px',}}>
                         Gestion Des Postes Utilisateurs

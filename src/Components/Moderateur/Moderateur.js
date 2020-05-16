@@ -317,7 +317,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider style={{width:'50%', marginLeft:'25%',backgroundColor:'#fff', marginBottom:'10px'}} />
         <List>
-          {['Dashboard','Gestion des articles','Test fonctionnel', 'Gestion des postes',
+          {['Dashboard','Gestion des articles','Gestion des zones', 'Gestion des postes',
               'Infos des reseaux', 'Statistiques', 'Mon compte'].map((text, index) => (
             <ListItem button key={index} className={'menuItem01'} onClick={event => handleContent(index)} >
               <ListItemIcon className={classes.menuItem}>
@@ -335,7 +335,7 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon className={classes.menuItem}>
                 <ExitToAppIcon/>
               </ListItemIcon>
-              <Link style={{color:'#ffffff'}} to='/Moderateur/logout'>Moderateur</Link> 
+              <Link style={{color:'#ffffff'}} to='/Moderateur/logout'>Se Deconnecter</Link> 
             </ListItem>
           ))}
         </List>

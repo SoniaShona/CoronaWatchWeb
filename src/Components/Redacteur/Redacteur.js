@@ -323,7 +323,7 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon className={classes.menuItem}>
                 <ExitToAppIcon/>
               </ListItemIcon>
-              <Link style={{color:'#ffffff'}} to='/Redacteur/logout'>Moderateur</Link> 
+              <Link style={{color:'#ffffff'}} to='/Redacteur/logout'>Se Deconnecter</Link> 
             </ListItem>
           ))}
         </List>

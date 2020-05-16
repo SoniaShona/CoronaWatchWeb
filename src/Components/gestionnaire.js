@@ -22,13 +22,13 @@ export default function gestionnaire() {
                     <ListItemAvatar>
                      <Avatar />
                     </ListItemAvatar>
-                    <Link to='/Moderateur/login'>Moderateur</Link>
+                    <Link style={{color:'#444456'}} to='/Moderateur/login'>Moderateur</Link>
                 </ListItem>
                 <ListItem button key='1' className={'menuItem1'}  >
                     <ListItemAvatar>
                      <Avatar />
                     </ListItemAvatar>
-                    <Link to='/Redacteur/login'>Redacteur</Link>
+                    <Link style={{color:'#444456'}} to='/Redacteur/login'>Redacteur</Link>
                 </ListItem>
             </List>          
         </Grid>    

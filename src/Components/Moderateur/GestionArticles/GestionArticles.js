@@ -262,7 +262,6 @@ export default function EnhancedTable() {
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
-    console.log('index=   ',name);
     var x=document.getElementsByClassName('article');
     document.getElementById('firstArticle').style.display='none';
     for(let i=0;i<x.length; i++){x[i].style.display='none';}
@@ -313,18 +312,18 @@ export default function EnhancedTable() {
                 <Grid container spacing={3}>
                     <Grid container item lg={12} md={12} xl={12} xs={12}>
                       <Card style={{height:'30px', width:'30px', backgroundColor:'#4E73DF', borderRadius:'5px',boxShadow: '1px 2px 11px -1px rgba(164,164,208,0.75)',}}>
-                        <AssignmentIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px' }}/>
+                        <AssignmentIcon style={{color:'#ffffff',height:'16px', width:'16px', marginTop:'7px',marginLeft:'7px' }}/>
                       </Card>
                       <Typography variant='h6' style={{textAlign:'left', marginLeft:'10px',}}>
                         Gestion Des Articles
                       </Typography>
                     </Grid>
                     {data.map(stat => (
-                    <Grid className={'article'} item lg={6} md={6} xl={3} xs={12} style={{display:'none'}}>
+                    <Grid className={'article'} item lg={6} md={12} xl={12} xs={12} style={{display:'none'}}>
                         <ArticleCard {...stat}/>
                     </Grid>
                      ))}
-                    <Grid id='firstArticle' item lg={6} md={6} xl={3} xs={12}>
+                    <Grid id='firstArticle' item lg={6} md={12} xl={12} xs={12}>
                         <ArticleCard {...data[0]}/>
                     </Grid>
                     <Grid item lg={6} md={12} xl={9} xs={12}>
