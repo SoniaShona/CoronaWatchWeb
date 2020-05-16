@@ -27,7 +27,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Avatar from '@material-ui/core/Avatar';
 import HomeIcon from '@material-ui/icons/Home';
 import Home from './home/Home'
-
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -323,7 +323,7 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon className={classes.menuItem}>
                 <ExitToAppIcon/>
               </ListItemIcon>
-              <ListItemText primary={text} className={classes.menuItem}/> 
+              <Link style={{color:'#ffffff'}} to='/Redacteur/logout'>Moderateur</Link> 
             </ListItem>
           ))}
         </List>

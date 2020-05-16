@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import Moderateur from '../Moderateur'
+import Redacteur from '../Redacteur'
 
 export default class ModeratorPage extends Component {
 
@@ -23,7 +23,7 @@ export default class ModeratorPage extends Component {
     }
     return (
       <div>
-        <Moderateur/>
+        <Redacteur/>
       </div>
     );
   }

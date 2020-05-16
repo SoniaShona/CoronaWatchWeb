@@ -96,7 +96,7 @@ export default function RecipeReviewCard(props) {
   const validerArticle = (event, data) => {
     console.log('id= ',data.id);
     const data1 ={
-     // "id": data.id,
+      // "id": data.id,
       //"user": data.user,
       "verified": true,
       //"timestamp": data.timestamp,

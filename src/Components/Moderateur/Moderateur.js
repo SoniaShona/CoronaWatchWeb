@@ -36,7 +36,7 @@ import MonCompte from './dashboard/Dashboard';
 import GestionDesArticles from './GestionArticles/GestionArticles';
 import InfosReseaux from './infosReseaux/InfoReseaux'
 import GestionPostsUtilisateurs from './postsUtilisateurs/GestionPostsUtilisateurs';
-
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -335,7 +335,7 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon className={classes.menuItem}>
                 <ExitToAppIcon/>
               </ListItemIcon>
-              <ListItemText primary={text} className={classes.menuItem}/> 
+              <Link style={{color:'#ffffff'}} to='/Moderateur/logout'>Moderateur</Link> 
             </ListItem>
           ))}
         </List>

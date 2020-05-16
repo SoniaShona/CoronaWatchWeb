@@ -13,7 +13,7 @@ class Login extends Component {
     this.state = {
       token: null,
       loggedIn:loggedin,
-      credentials: {username: 'test', password: 'souhaib', roles: ['MODERATOR'], email: '', 
+      credentials: {username: '', password: '', roles: ['WRITER'], email: '', 
       first_name: '', last_name: ''},
       login_credentials: {
         client_id:"FEqMPOyqzHI3FkrvS5GmduZa3OFy8plFL5sEBuHd", 
@@ -78,7 +78,7 @@ class Login extends Component {
 
   render() {
     if(this.state.loggedIn){
-      return <Redirect to="/Moderateur/ModeratorPage" />
+      return <Redirect to="/Redacteur/RedacteurPage" />
     }
     return (
       <div style={{paddingLeft:'25%', paddingRight:'15%', paddingBottom:'5%', paddingTop:'5%'}}>
