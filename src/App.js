@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import './App.css';
-import Login from './Components/login';
-import Books from './Components/books';
+import React, { Component} from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Login from './Components/Moderateur/auth/login'
+import Logout from './Components/Moderateur/auth/logout'
+import ModeratorPage from './Components/Moderateur/auth/ModeratorPage'
+import Gestionnaire from './Components/gestionnaire'
 
-function App() {
-
-  const [token, setToken] = useState('');
-
-  const userLogin = (tok) => {
-    setToken(tok);
+export default class logout extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+        <Route exact path='/' component={Gestionnaire} />
+        <Route exact path='/Components/Moderateur/auth/ModeratorPage' component={ModeratorPage} />
+        <Route exact path='/Components/Moderateur/auth/logout' component={Logout} />
+      </Switch>
+      </BrowserRouter>
+    );
   }
-
-  return (
-    <div className="App">
-      <Login userLogin={userLogin}/>
-      <Books token={token}/>
-    </div>
-  );
 }
 
-export default App;
+

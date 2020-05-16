@@ -29,8 +29,10 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-perfect-scrollbar": "^1.5.8",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.0",
     "react-text": "^3.2.0",
+    "react-token-auth": "^1.1.7",
     "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "video-react": "^0.14.1"

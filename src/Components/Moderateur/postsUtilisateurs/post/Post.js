@@ -81,7 +81,8 @@ export default function RecipeReviewCard(props) {
         })
   }
   
-  const supprimerArticle = (event, id) => {
+  const supprimerPost = (event, id) => {
+    console.log('id= ',id);
     axios.delete('https://corona-watch-esi.herokuapp.com/content/videos/'+id)
     .then((response) => {
       console.log(response);
@@ -93,17 +94,18 @@ export default function RecipeReviewCard(props) {
   }
 
   const validerArticle = (event, data) => {
+    console.log('id= ',data.id);
     const data1 ={
-      "id": data.id,
-      "user": data.user,
+     // "id": data.id,
+      //"user": data.user,
       "verified": true,
-      "timestamp": data.timestamp,
-      "title": data.title,
-      "description": data.description,
-      "video":data.video,
+      //"timestamp": data.timestamp,
+      //"title": data.title,
+      //"description": data.description,
+      //"video":data.video,
     }
 
-    axios.put('https://corona-watch-esi.herokuapp.com/content/videos/'+data.id, data1)
+    axios.patch('https://corona-watch-esi.herokuapp.com/content/videos/'+data.id, data1)
     .then((response) => {
       console.log(response);
       document.getElementById('validerBtn').style.display='none';
@@ -123,7 +125,7 @@ export default function RecipeReviewCard(props) {
           <Button id='validerBtn' variant="contained" color="primary" style={{backgroundColor:'#4E73DF', marginRight:'10px'}} onClick={event => validerArticle(event, data)}>
               Valider
             </Button>
-            <Button id='supprimerBtn' variant="contained" color="secondary" onClick={event => supprimerArticle(event, data.id)}>
+            <Button id='supprimerBtn' variant="contained" color="secondary" onClick={event => supprimerPost(event, data.id)}>
               Supprimer
           </Button>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -7,6 +8,7 @@ class Login extends Component {
     let loggedin = false
 
     this.state = {
+      token: null,
       loggedIn:loggedin,
       credentials: {username: 'test', password: 'souhaib', roles: ['MODERATOR'], email: '', 
       first_name: '', last_name: ''},
@@ -31,13 +33,17 @@ class Login extends Component {
     .then( data => data.json())
     .then(
       data => {
-        this.props.userLogin(data.token);
-        console.log(data)
-        console.log(data.access_token)
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('refreshToken', data.refresh_token);
-        console.log(localStorage.getItem('token'))
-        console.log(localStorage.getItem('refreshToken'))
+        this.token=data.access_token
+        if(this.token){
+          //this.props.userLogin(data.token);
+          console.log(data)
+          console.log(data.access_token)
+          localStorage.setItem('token', data.access_token);
+          localStorage.setItem('refreshToken', data.refresh_token);
+          console.log(localStorage.getItem('token'))
+          console.log(localStorage.getItem('refreshToken'))
+          this.setState({loggedIn: true})
+        }
       }
     )
     .catch( error => console.error(error))
@@ -68,6 +74,9 @@ class Login extends Component {
   }
 
   render() {
+    if(this.state.loggedIn){
+      return <Redirect to="/Components/Moderateur/auth/ModeratorPage" />
+    }
     return (
       <div>
         <h1>Login user form</h1>

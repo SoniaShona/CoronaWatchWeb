@@ -2,26 +2,18 @@ import React, { Component} from 'react';
 
 class Login extends Component {
 
-  constructor(props){
-    super(props)
-    let loggedin = false
-
-    this.state = {
-      loggedIn:loggedin,
-      credentials: {username: 'test', password: 'souhaib', roles: ['MODERATOR'], email: '', 
-      first_name: '', last_name: ''},
-      login_credentials: {
-        client_id:"FEqMPOyqzHI3FkrvS5GmduZa3OFy8plFL5sEBuHd", 
-        client_secret:"BwDAYCbgvIUJO4bjd1cLq0iVPMFe4mRP3AIExj8tVSGWQs5QeDvwlPPl1ARerU4kq4fUc6HUqOTbksnHlmsNfWulDWFuVg5G4I15KLYsSVm8KYgsbVZkM0gLRddMcHum", 
-        grant_type:"password",
-        username: "",
-        password: "",
-      }
+  state = {
+    credentials: {username: 'test', password: 'souhaib', roles: ['MODERATOR'], email: '', 
+    first_name: '', last_name: ''},
+    login_credentials: {
+      client_id:"FEqMPOyqzHI3FkrvS5GmduZa3OFy8plFL5sEBuHd", 
+      client_secret:"BwDAYCbgvIUJO4bjd1cLq0iVPMFe4mRP3AIExj8tVSGWQs5QeDvwlPPl1ARerU4kq4fUc6HUqOTbksnHlmsNfWulDWFuVg5G4I15KLYsSVm8KYgsbVZkM0gLRddMcHum", 
+      grant_type:"password",
+      username: "",
+      password: "",
     }
-  
   }
 
-  
   login = event => {
     fetch('https://corona-watch-esi.herokuapp.com/auth/token/', {
       method: 'POST',
