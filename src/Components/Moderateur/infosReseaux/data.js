@@ -1,48 +1,60 @@
 export default {
 
-    //Liste des Posts des reseaux sociaux
-    listeDesPosts: [
+    //Liste des articles
+    ArticlesList: [
       {
-        idPost: 0,
-        titrePost: "titre 1",
-        date:"20-03-2020 - 12:13",
-        application: "Facebook",
+        idArticle: 0,
+        titreArticle: "Article 1",
+        date:"20-03-2020 - 10:30",
+        agentDeSante: "Mehemel Souhaib",
         jaime: 81,
         commentaire: 20,
       },
       {
-        idPost: 1,
-        titrePost: "titre 2",
-        date:"20-03-2020 - 12:13",
-        application: "Youtube",
+        idArticle: 1,
+        titreArticle: "Article 2",
+        date:"20-03-2020 - 10:30",
+        agentDeSante: "Mehemel Souhaib",
         jaime: 81,
         commentaire: 20,
       },
       {
-        idPost: 3,
-        titrePost: "titre 3",
-        date:"20-03-2020 - 12:13",
-        application: "Twitter",
+        idArticle: 2,
+        titreArticle: "Article 3",
+        date:"20-03-2020 - 10:30",
+        agentDeSante: "Mehemel Souhaib",
+        jaime: 81,
+        commentaire: 20,
+      },
+      {
+        idArticle: 3,
+        titreArticle: "Article 4",
+        date:"20-03-2020 - 10:30",
+        agentDeSante: "Mehemel Souhaib",
         jaime: 81,
         commentaire: 20,
       },
     ],
 
-    //Post affiche
-    Post:{
-      idPost: 1,
-      Application: 'Facebook',
-      logo: './images/socialMedia/facebook.png',
+    //Article Card
+    ArticleCard:{
+      idArticle: 1,
+      redacteur: 'MEHEMEL SOUHAIB',
+      photoProfilRedacteur: './images/face24.jpg',
       date:'28-03-2020 - 11:15',
-      titrePost:'',
-      contenuPost: 'Comment resister contre Coronavirus?? contenu ici',
+      titreArticle:'نصائح لتجنب مخاطر كورونا',
+      contenuArticle: 'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
+      'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
+      'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
+      'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا'+
+      'نصائح لتجنب مخاطر كورونا نصائح لتجنب مخاطر كورونا',
       images:[
         {
-          idPost: 1,
+          idArticle: 1,
           src:"./images/corona.jpg",
         },
         {
-          idPost: 1,
+          idArticle: 1,
           src:"./images/corona.jpg",
         },
       ],
